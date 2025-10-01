@@ -39,12 +39,12 @@ bibliography: paper.bib
 
 # Summary
 We present a MATLAB toolbox for human movement simulation and analysis. The toolbox's focus is on creating simulations of human walking and running by solving 
-trajectory optimization problems. **In these problems, the muscle excitations  and initial state are found that minimize an objective related to energy expenditure. **
+trajectory optimization problems. In these problems, the muscle excitations  and initial state are found that minimize an objective related to energy expenditure.
 To solve the trajectory optimization problems, we have implemented a direct collocation framework.
 Different objectives have been implemented that represent energy or effort minimization. We have also included 
 different objectives for data tracking, including tracking of joint angles, ground reaction forces, accelerometer data, gyroscope data, and marker positions. We have implemented
-two different two-dimensional (2D) **musculoskeletal** models and one three-dimensional (3D) musculoskeletal model. 
-To show how the toolbox can be used, we include a **tutorial**, a 2D and a 3D introductory example, as well as different 
+two different two-dimensional (2D) musculoskeletal models and one three-dimensional (3D) musculoskeletal model. 
+To show how the toolbox can be used, we include a tutorial, a 2D and a 3D introductory example, as well as different 
 applications that are based on previous publications. The toolbox is versatile due 
 to its object-oriented design, such that different dynamics models can be easily combined with different 
 problem classes. In the future, we aim to implement different other 
@@ -53,7 +53,7 @@ forward shooting can be used to investigate neural control of gait.
 
 # Statement of Need
 Movements of humans and other animals are extremely versatile, while our efficiency is unmatched by human-made 
-machines, even though humans seem to have inaccurate and inefficient controllers. Therefore, a better understanding of human movement can have a large impact for persons with movement disabilities, sports performance optimization, 
+machines, even though humans seemingly have inaccurate and inefficient controllers. Therefore, a better understanding of human movement can have a large impact for persons with movement disabilities, sports performance optimization, 
 and design of human-made devices. Movement simulations are a key tool for creating this understanding.
 On the one hand, we can use so-called predictive simulations [@ackermann:2010; @falisse:2019;@koelewijn:2018] to investigate unseen movements by replicating the optimization in the central nervous system [@zarrugh:1974] in a computer optimization. Such simulations can help us decipher fundamentals of movement
 in humans and other animals.
@@ -130,12 +130,12 @@ the lumbar joint locked, called `gait2d_osim`.
 
 **Table 1:** Overview of dynamics models implemented in the BioMAC-Sim-Toolbox
 
-| Model name       | Dimension  | Degrees of freedom | Number of muscles | Arm torque actuators | Source | 
-| ---------------- | ---------- | ---------- | ----------  | ---------- | ------------- | 
-| gait2dc          |      2D    |     9      |     16      |    -       |[@koelewijn:2016; @koelewijn:2022; @dorscky:2019a; @dorschky:2019b] |
-| gait2d_osim      |      2D    |     9      |     18      |    -       |[@seth:2018]
-| gait10dof18musc  |      2D    |     10     |     18      |    -       |[@seth:2018]
-| gait3d           |      3D    |     33     |     92      |   10       |[@nitschke:2020; @nitschke:2023; @nitschke:2024] |
+| Model name      | Dimension | Degrees of freedom | Number of muscles | Arm torque actuators | Source | 
+| --------------- | --------- | ---------- | ----------  | ---------- | -------------- | 
+| gait2dc         |      2D   |     9      |     16      |    -       |[@koelewijn:2016; @koelewijn:2022; @dorscky:2019a; @dorschky:2019b] |
+| gait2d_osim     |      2D   |     9      |     18      |    -       |[@seth:2018]
+| gait10dof18musc |      2D   |     10     |     18      |    -       |[@seth:2018]
+| gait3d          |      3D   |     33     |     92      |   10       |[@nitschke:2020; @nitschke:2023; @nitschke:2024] |
 
 # Using the Toolbox
 To get started, we recommend that users first look at the tutorial in the folder `Tutorial` and the folder `IntroductionExamples` in 
