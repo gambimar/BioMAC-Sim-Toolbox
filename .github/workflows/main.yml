@@ -7,9 +7,7 @@ name: Doxygen Action
 on:
   push:
     branches: [ main ]
-
-
-  
+ 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -21,20 +19,35 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-        
-    - name: Doxygen Action
-      uses: mattnotmitt/doxygen-action@v1.1.0
-      with:
-        # Path to Doxyfile
-        doxyfile-path: "./Doxyfile" # default is ./Doxyfile
-        # Working directory
-        working-directory: "./docs/Doxygen" # default is .
+      
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y wget graphviz
+      shell: bash
+
+    - name: Install Doxygen v1.9.6
+      run: |
+        transformed_version=1_9_6
+        wget https://github.com/doxygen/doxygen/releases/download/Release_${transformed_version}/doxygen-1.9.6.linux.bin.tar.gz
+        tar -xzf doxygen-1.9.6.linux.bin.tar.gz
+        sudo mv doxygen-1.9.6/bin/doxygen /usr/local/bin/doxygen
+      shell: bash
+
+    - name: Generate Doxygen Documentation
+      run: ./docs/Doxygen/build_docs.sh
+      shell: bash
+          
+    #- name: Doxygen Action
+    #  uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
+    #  with:
+    #      github_token: ${{ secrets.GITHUB_TOKEN }}
+    #      folder: ./docs/Doxygen/html
+    #      config_file: ./docs/Doxygen/Doxyfile
     
     - name: Upload static files as artifact
       id: deployment
       uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
       with:
-        path: ./docs/Doxygen/Doxygen_HTML
+        path: ./docs/Doxygen/html
 
     # Deployment job
   deploy:
